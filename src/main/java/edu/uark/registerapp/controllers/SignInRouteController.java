@@ -20,8 +20,8 @@ import edu.uark.registerapp.controllers.enums.ViewModelNames;
 import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.EmployeeSignIn;
 
-@Controller
-@RequestMapping(value = "/")
+@Controller //specifies that Spring handles this
+@RequestMapping(value = "/") //Base page for website
 public class SignInRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView showSignIn(
@@ -33,13 +33,14 @@ public class SignInRouteController extends BaseRouteController {
 		} catch (NotFoundException e) {
 			return new ModelAndView(
 				REDIRECT_PREPEND.concat(
-					ViewNames.EMPLOYEE_DETAIL.getRoute()));
+					ViewNames.EMPLOYEE_DETAIL.getRoute())); //if employee not found, redirect to employee detail view
+					//allows user to create new employee when none are in DB
 		}
 
 		ModelAndView modelAndView =
 			this.setErrorMessageFromQueryString(
 				new ModelAndView(ViewNames.SIGN_IN.getViewName()),
-				queryParameters);
+				queryParameters); //Employees are in database, go to sign in view
 		
 		if (queryParameters.containsKey(QueryParameterNames.EMPLOYEE_ID.getValue())) {
 			modelAndView.addObject(
@@ -60,14 +61,14 @@ public class SignInRouteController extends BaseRouteController {
 			this.employeeSignInCommand
 				.setSessionId(request.getSession().getId())
 				.setEmployeeSignIn(employeeSignIn)
-				.execute();
-		} catch (Exception e) {
+				.execute(); //provides access to request session ID
+		} catch (Exception e) { //Id and password are incorrect
 			ModelAndView modelAndView =
-				new ModelAndView(ViewNames.SIGN_IN.getViewName());
+				new ModelAndView(ViewNames.SIGN_IN.getViewName()); //serve up sign in page
 
 			modelAndView.addObject(
 				ViewModelNames.ERROR_MESSAGE.getValue(),
-				e.getMessage());
+				e.getMessage()); //indicates that sign in was not successful
 			modelAndView.addObject(
 				ViewModelNames.EMPLOYEE_ID.getValue(),
 				employeeSignIn.getEmployeeId());
@@ -77,7 +78,7 @@ public class SignInRouteController extends BaseRouteController {
 
 		return new ModelAndView(
 			REDIRECT_PREPEND.concat(
-				ViewNames.MAIN_MENU.getRoute()));
+				ViewNames.MAIN_MENU.getRoute())); //routes to MainMenu view
 	}
 
 	// Properties

@@ -37,5 +37,6 @@ public class ValidateActiveUserCommand implements ResultCommandInterface<ActiveU
 	}
 
 	@Autowired
-	private ActiveUserRepository activeUserRepository;
+	private ActiveUserRepository activeUserRepository;//instance of repository injected
+	//used to have access to repository methods
 }

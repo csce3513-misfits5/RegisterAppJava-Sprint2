@@ -11,3 +11,6 @@ public interface ActiveUserRepository extends CrudRepository<ActiveUserEntity, U
 	Optional<ActiveUserEntity> findByEmployeeId(UUID employeeId);
 	Optional<ActiveUserEntity> findBySessionKey(String sessionKey);
 }
+//CRUD interface defines methods like save(), findAll(), findById(), deleteById()
+//At runtime, Spring Data JPA generates implementation code
+//Note: specify type of the model class and type of primary key field

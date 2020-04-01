@@ -11,8 +11,8 @@ function validateForm() {
 
 		displayError("Please provide a valid employee ID.");
 
-		employeeIdEditElement.focus();
-		employeeIdEditElement.select();
+		employeeIdEditElement.focus(); //focuses on the ID element for typing
+		employeeIdEditElement.select(); //selects evrything inside the element
 		
 		return false;
 	}
@@ -23,13 +23,13 @@ function validateForm() {
 
 		displayError("Please provide a valid password. It may not be blank.");
 
-		passwordEditElement.focus();
-		passwordEditElement.select();
+		passwordEditElement.focus(); //focuses on the password element for typing
+		passwordEditElement.select(); //selects everything inside the element
 		
 		return false;
 	}
 
-	return true;
+	return true; //password not blank & employee ID is numeric and not blank
 }
 
 //Getters and setters

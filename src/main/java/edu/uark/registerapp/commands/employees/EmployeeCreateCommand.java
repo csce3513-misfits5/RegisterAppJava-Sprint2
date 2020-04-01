@@ -81,7 +81,8 @@ public class EmployeeCreateCommand implements ResultCommandInterface<Employee> {
 	}
 
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	private EmployeeRepository employeeRepository;//instance of repository injected
+	//used to have access to repository methods
 
 	public EmployeeCreateCommand() {
 		this.isInitialEmployee = false;

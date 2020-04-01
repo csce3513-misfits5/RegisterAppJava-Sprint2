@@ -19,9 +19,9 @@
 	<div id="main" class="main">
 		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
 			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
-		</div>
+		</div> <!--displays an error message when one is available-->
 
-		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent">
+		<form action="/" method="POST" onsubmit="return validateForm();" class="inputContent"> <!--submits user credentials, validateForm() defined in signIn.js-->
 			<div>
 				<input id="employeeId" type="number" name="employeeId" placeholder="Employee ID" class="update" th:value="${employeeId}" />
 			</div>

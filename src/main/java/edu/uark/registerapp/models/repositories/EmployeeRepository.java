@@ -13,3 +13,6 @@ public interface EmployeeRepository extends CrudRepository<EmployeeEntity, UUID>
 	Optional<EmployeeEntity> findById(UUID id);
 	Optional<EmployeeEntity> findByEmployeeId(int employeeId);
 }
+//CRUD interface defines methods like save(), findAll(), findById(), deleteById()
+//At runtime, Spring Data JPA generates implementation code
+//Note: specify type of the model class and type of primary key field

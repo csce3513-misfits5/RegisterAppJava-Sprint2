@@ -33,18 +33,18 @@ public class EmployeeSignInCommand implements ResultCommandInterface<Employee> {
 	private void validateProperties() {
 		if (StringUtils.isBlank(this.employeeSignIn.getEmployeeId())) {
 			throw new UnprocessableEntityException("employee ID");
-		}
+		} //Employee ID should not be blank
 		try {
 			Integer.parseInt(this.employeeSignIn.getEmployeeId());
 		} catch (final NumberFormatException e) {
 			throw new UnprocessableEntityException("employee ID");
-		}
+		} //Employee ID should be number (converts to int)
 		if (StringUtils.isBlank(this.employeeSignIn.getPassword())) {
 			throw new UnprocessableEntityException("password");
-		}
+		} //password should not be blank
 	}
 
-	@Transactional
+	@Transactional //Queries database
 	private EmployeeEntity SignInEmployee() {
 		final Optional<EmployeeEntity> employeeEntity =
 			this.employeeRepository.findByEmployeeId(
@@ -74,10 +74,11 @@ public class EmployeeSignInCommand implements ResultCommandInterface<Employee> {
 							employeeEntity.get().getFirstName()
 								.concat(" ")
 								.concat(employeeEntity.get().getLastName())));
-		} else {
+		} //No active user in db, create new one
+		else {
 			this.activeUserRepository.save(
 				activeUserEntity.get().setSessionKey(this.sessionId));
-		}
+		} //Active user exists, update current session key
 
 		return employeeEntity.get();
 	}
@@ -104,5 +105,6 @@ public class EmployeeSignInCommand implements ResultCommandInterface<Employee> {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 	@Autowired
-	private ActiveUserRepository activeUserRepository;
+	private ActiveUserRepository activeUserRepository;//instance of repository injected
+	//used to have access to repository methods
 }

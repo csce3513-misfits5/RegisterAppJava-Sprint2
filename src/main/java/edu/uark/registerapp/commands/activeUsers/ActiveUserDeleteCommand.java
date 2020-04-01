@@ -21,7 +21,7 @@ public class ActiveUserDeleteCommand implements VoidCommandInterface {
 		if (activeUserEntity.isPresent()) {
 			this.activeUserRepository.delete(activeUserEntity.get());
 		}
-	}
+	} //Deletes the current active user from the db
 
 	// Properties
 	private String sessionKey;
@@ -34,5 +34,6 @@ public class ActiveUserDeleteCommand implements VoidCommandInterface {
 	}
 
 	@Autowired
-	private ActiveUserRepository activeUserRepository;
+	private ActiveUserRepository activeUserRepository; //instance of repository injected
+	//used to have access to repository methods
 }

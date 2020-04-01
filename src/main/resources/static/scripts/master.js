@@ -178,7 +178,7 @@ function getErrorMessageDisplayElement() {
 }
 // End getters and setters
 
-//Sign out
+//Sign out (Task 7)
 function signOutActionClickHandler() {
 	ajaxDelete("/api/signOut", (callbackResponse) => {
 		if ((callbackResponse.data != null)

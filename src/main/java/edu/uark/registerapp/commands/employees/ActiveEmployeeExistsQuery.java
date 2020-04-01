@@ -13,9 +13,10 @@ public class ActiveEmployeeExistsQuery implements VoidCommandInterface {
 	public void execute() {
 		if (!this.employeeRepository.existsByIsActive(true)) {
 			throw new NotFoundException("Employee");
-		}
+		} //If active user not found in database, throw exception
 	}
 
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	private EmployeeRepository employeeRepository;//instance of repository injected
+	//used to have access to repository methods
 }

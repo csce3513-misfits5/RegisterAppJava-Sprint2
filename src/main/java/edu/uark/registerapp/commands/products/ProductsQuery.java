@@ -25,5 +25,6 @@ public class ProductsQuery implements ResultCommandInterface<List<Product>> {
 	}
 
 	@Autowired
-	ProductRepository productRepository;
+	ProductRepository productRepository;//instance of repository injected
+	//used to have access to repository methods
 }

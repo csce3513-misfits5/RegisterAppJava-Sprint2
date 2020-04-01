@@ -64,5 +64,6 @@ public class ProductUpdateCommand implements ResultCommandInterface<Product> {
 	}
 	
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductRepository productRepository;//instance of repository injected
+	//used to have access to repository methods
 }

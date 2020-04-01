@@ -38,5 +38,6 @@ public class EmployeeDeleteCommand implements VoidCommandInterface {
 	}
 	
 	@Autowired
-	private EmployeeRepository employeeRepository;
+	private EmployeeRepository employeeRepository;//instance of repository injected
+	//used to have access to repository methods
 }
