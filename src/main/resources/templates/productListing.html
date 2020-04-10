@@ -2,7 +2,7 @@
 
 <head>
 	<title>Register - Products</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" type="text/css" href="/styles/master.css">
 	<link rel="stylesheet" type="text/css" href="/styles/productListing.css">
@@ -14,6 +14,7 @@
 <body>
 	<div class="header">
 		<h1 class="primary-message">Products Listing</h1>
+		<input type = "image" id="ViewCart" src="/images/View-Cart.png" alt="View Cart" onclick = "addProduct();"/>
 	</div>
 
 	<div id="main" class="main">
@@ -38,6 +39,11 @@
 			</ul>
 		</div>
 
+		<!-- The pixels should be set to rouglhy the right position -->
+		<div style="position: relative; right: -150px; top: -80px;">
+				<input type = "image" id="shoppingCartImage" src="/images/Shopping-Cart.png" alt="Shopping Cart" onclick = "addProduct();"/>
+		</div>
+
 		<div class="hidden">
 			<input type="checkbox" id="isRefreshed" class="hidden">
 			<script type="text/javascript">
@@ -53,12 +59,13 @@
 				}
 			</script>
 		</div>
+
 	</div>
 
 	<div class="footer">
 		<img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
 	</div>
-		
+
 </body>
 
 </html>
