@@ -1,3 +1,18 @@
+#ViewCart {
+	position: fixed;
+  top: 20;
+  right: 20;
+	border-style: solid;
+}
+#signOutImage {
+	position: fixed;
+  bottom: 20;
+  right: 20;
+	border-style: solid;
+}
+#shoppingCartImage {
+	border-style: solid;
+}
 .productsWrapper {
 	display: inline-block;
 }
