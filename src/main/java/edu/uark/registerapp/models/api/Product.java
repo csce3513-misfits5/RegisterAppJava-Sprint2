@@ -40,6 +40,19 @@ public class Product extends ApiResponse {
 		return this;
 	}
 
+	//----
+	private long price; //price variable added for transactions
+
+	public long getPrice() {
+		return this.price;
+	}
+
+	public Product setPrice(final long newPrice) {
+		this.price = newPrice;
+		return this;
+	}
+	//----
+
 	private String createdOn;
 
 	public String getCreatedOn() {
