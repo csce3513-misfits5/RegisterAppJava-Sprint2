@@ -23,7 +23,7 @@ import edu.uark.registerapp.models.entities.ActiveUserEntity;
 import edu.uark.registerapp.models.enums.EmployeeClassification;
 
 @Controller
-@RequestMapping(value = "/transactionDetails")
+@RequestMapping(value = "/shoppingCart")
 public class TransactionRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start(
