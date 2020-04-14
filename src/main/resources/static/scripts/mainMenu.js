@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 	getStartTransactionActionElement().addEventListener(
 		"click",
-		() => { displayError("Functionality has not yet been implemented."); });
+		() => { window.location.assign("/shoppingCart");}); //takes user to transaction page
 
 	getViewProductsActionElement().addEventListener(
 		"click",
-		() => { window.location.assign("/productListing"); });
+		() => { window.location.assign("/productListing"); }); //takes user to product listing page
 
 	getCreateEmployeeActionElement().addEventListener(
 		"click",
-		() => { window.location.assign("/employeeDetail"); });
+		() => { window.location.assign("/employeeDetail"); }); //takes user to a page to create an employee
 
 	getProductSalesReportActionElement().addEventListener(
 		"click",

@@ -1,20 +1,25 @@
-#ViewCart {
-	position: fixed;
-  top: 20;
-  right: 20;
-	border-style: solid;
-}
 #signOutImage {
 	position: fixed;
-  bottom: 20;
-  right: 20;
+  bottom: 0;
+  right: 0;
 	border-style: solid;
 }
-#shoppingCartImage {
-	border-style: solid;
+div.footer {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
 }
-.productsWrapper {
-	display: inline-block;
+
+img.footer {
+	z-index: 1;
+	height: 50px;
+    text-decoration: none;
+    display: inline-block;
+	cursor: pointer;
+	position: fixed;
+	right: 20;
+	bottom: 20;
 }
 
 .products {
@@ -43,3 +48,8 @@
 a.button {
 	text-decoration: none;
 }
+
+.productsDisplay {
+  margin: auto;
+}
+/* this is for the other one */

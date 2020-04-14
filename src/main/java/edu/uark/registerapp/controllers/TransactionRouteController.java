@@ -24,7 +24,7 @@ import edu.uark.registerapp.models.enums.EmployeeClassification;
 import edu.uark.registerapp.commands.products.ProductUpdateCommand;
 
 @Controller
-@RequestMapping(value = "/transactionDetails")
+@RequestMapping(value = "/shoppingCart")
 public class TransactionRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView start(@RequestParam final Map<String, String> queryParameters,final HttpServletRequest request)
