@@ -21,24 +21,86 @@ import edu.uark.registerapp.controllers.enums.ViewNames;
 import edu.uark.registerapp.models.api.Product;
 import edu.uark.registerapp.models.entities.ActiveUserEntity;
 import edu.uark.registerapp.models.enums.EmployeeClassification;
+import edu.uark.registerapp.commands.products.ProductUpdateCommand;
 
 @Controller
 @RequestMapping(value = "/transactionDetails")
 public class TransactionRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView start(
-		@RequestParam final Map<String, String> queryParameters,
-		final HttpServletRequest request
-	) {
-        // Needs to be altered for transaction JK
-        final ModelAndView modelAndView =
-			this.setErrorMessageFromQueryString(
-				new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()),
-				queryParameters);
+	public ModelAndView start(@RequestParam final Map<String, String> queryParameters,final HttpServletRequest request)
+	{
+		final Optional<ActiveUserEntity> activeUserEntity =	this.getCurrentUser(request);
+		if (!activeUserEntity.isPresent()) 
+		{
+			return this.buildInvalidSessionResponse();
+		} 
+		else if (!this.isElevatedUser(activeUserEntity.get())) 
+		{
+			return this.buildNoPermissionsResponse(ViewNames.PRODUCT_LISTING.getRoute());
+		}
+
+		// create modelandview to get product and find count status
+		final ModelAndView modelAndView = this.setErrorMessageFromQueryString(new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()),	queryParameters);
+		int count = this.productUpdateCommand.getApiProduct().getCount();
+
+		// If nothing exists set count to 1 or increment count
+		if(count <= 0)
+		{
+			modelAndView.addObject(ViewModelNames.PRODUCT.getValue(),(new Product()).setLookupCode(StringUtils.EMPTY).setCount(1));
+		}
+		else
+		{
+			modelAndView.addObject(ViewModelNames.PRODUCT.getValue(),(new Product()).setCount(count + 1));
+		}
+
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/{productId}", method = RequestMethod.GET)
+	public ModelAndView startWithProduct(@PathVariable final UUID productId, @RequestParam final Map<String, String> queryParameters,final HttpServletRequest request) 
+	{
+		final Optional<ActiveUserEntity> activeUserEntity =	this.getCurrentUser(request);
+		if (!activeUserEntity.isPresent()) 
+		{
+			return this.buildInvalidSessionResponse();
+		} 
+		else if (!this.isElevatedUser(activeUserEntity.get())) 
+		{
+			return this.buildNoPermissionsResponse(ViewNames.PRODUCT_LISTING.getRoute());
+		}
+
+		final ModelAndView modelAndView =this.setErrorMessageFromQueryString(new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()), queryParameters);
+		int count = this.productUpdateCommand.getApiProduct().getCount();
+		
+		// Create and set value to set the count in the try/catch
+		int countReplace;
+		if(count <= 0)
+		{
+			countReplace = 1;
+		}
+		else
+		{
+			countReplace = count + 1;
+		}
+
+		try 
+		{
+			modelAndView.addObject(ViewModelNames.PRODUCT.getValue(), this.productQuery.setProductId(productId).execute());
+		} 
+		catch (final Exception e) 
+		{
+			modelAndView.addObject(ViewModelNames.ERROR_MESSAGE.getValue(),	e.getMessage());
+			modelAndView.addObject(ViewModelNames.PRODUCT.getValue(),(new Product()).setCount(countReplace).setLookupCode(StringUtils.EMPTY));
+		}
+
+		return modelAndView;
+	}
+
+
+
 	// Properties
-	//@Autowired
-	//private ProductQuery productQuery;
+	@Autowired
+	private ProductQuery productQuery;
+	@Autowired
+	private ProductUpdateCommand productUpdateCommand;
 }
