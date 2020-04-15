@@ -3,7 +3,6 @@ package edu.uark.registerapp.commands.transactions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javax.transaction.Transactional;
 
@@ -26,8 +25,18 @@ public class TransactionCreateCommand implements VoidCommandInterface {
         final List<TransactionEntryEntity> transactionEntries = new ArrayList<>();
 
         //TODO: products need to be added to transaction when clicked, need to be able to adjust quantity
-
-        this.createTransaction(transactionEntries, transactionTotal);
+        for (ProductEntity productEntity : this.productRepository.findAll())
+        {
+            double purchasedQuantity = 1; //right now hard coded for one
+            transactionTotal += (productEntity.getPrice() * purchasedQuantity); //grabs price of entry and multiplies by quantity
+            transactionEntries.add(
+                (new TransactionEntryEntity())
+                    .setPrice(productEntity.getPrice())
+                    .setProductId(productEntity.getId())
+                    .setQuantity(purchasedQuantity)); //adds entry to the entries ArrayList *NOTE: Id is set below
+            
+        }
+        this.createTransaction(transactionEntries, transactionTotal); //persists entry to database
     }
 
 
