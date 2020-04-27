@@ -15,13 +15,19 @@
 
 
 <!-- this will have to be the actual products -->
+<div id="main" class="main">
+  <div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+    <h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+  </div>
+
+  <div class="productsWrapper">
 <div class = "productsDisplay">
   <ul id="productsListing" class="products">
     <li th:each="product : ${products}">
       <input type="hidden" name="productId" th:value="${product.id}" />
       <span class="productLookupCodeDisplay" th:text="${product.lookupCode}">lookupCode</span>
       <br />&nbsp;&nbsp;<span class="productCountDisplay" th:text="${product.count}">0</span>
-
+      <br />&nbsp;&nbsp;<span class="productPriceDisplay" th:text="${product.price}">0</span>
     </li>
   </ul>
 </div>
