@@ -62,13 +62,13 @@ public class TransactionEntryEntity {
 	}
 
     @Column(name="price")
-    private long price;
+    private double price;
 
-	public long getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
-	public TransactionEntryEntity setPrice(final long price) {
+	public TransactionEntryEntity setPrice(final double price) {
 		this.price = price;
 		return this;
 	}
