@@ -27,7 +27,9 @@ import edu.uark.registerapp.commands.products.ProductUpdateCommand;
 @RequestMapping(value = "/shoppingCart")
 public class TransactionRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView start(@RequestParam final Map<String, String> queryParameters,final HttpServletRequest request)
+	public ModelAndView start(
+		@RequestParam final Map<String, String> queryParameters,
+		final HttpServletRequest request)
 	{
 		final Optional<ActiveUserEntity> activeUserEntity =	this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) 
