@@ -84,14 +84,14 @@ public class ProductEntity {
 
 	public ProductEntity() { //default constructor for ProductEntity
 		this.count = -1;
-		this.price = 0L;
+		this.price = 0L; //price var
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
 	}
 
 	public ProductEntity(final String lookupCode, final int count, final long price) {
 		this.count = count;
-		this.price = price;
+		this.price = price; //price var
 		this.id = new UUID(0, 0);
 		this.lookupCode = lookupCode;
 	}
