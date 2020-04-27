@@ -46,7 +46,7 @@
 					<br />&nbsp;&nbsp;<span class="productCountDisplay" th:text="${product.count}">0</span>
 					<br />&nbsp;&nbsp;<span class="productPriceDisplay" th:text="${product.price}">0</span>
 					<br />&nbsp;&nbsp;<span class="productCreatedOnDisplay" th:text="${product.createdOn}">12/31/1999</span>
-					<div style="position: relative; right: -260px; top: -50px;">
+					<div style="position: relative; right: -260px; top: -70px;">
 						<input type = "image" id="shoppingCartImage" src="/images/Shopping-Cart.png" alt="Shopping Cart" onclick = "addProduct();"/>
 					</div>
 
@@ -54,10 +54,11 @@
 			</ul>
 		</div>
 
-		<!-- The pixels should be set to rouglhy the right position -->
+		<!-- The pixels should be set to rouglhy the right position
 		<div style="position: relative; right: -150px; top: -80px;">
 				<input type = "image" id="shoppingCartImage" src="/images/Shopping-Cart.png" alt="Shopping Cart" onclick = "addProduct();"/>
 		</div>
+	-->
 
 		<div class="hidden">
 			<input type="checkbox" id="isRefreshed" class="hidden">
