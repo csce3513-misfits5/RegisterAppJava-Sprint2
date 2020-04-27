@@ -59,7 +59,7 @@ public class ProductEntity {
 		return this.price;
 	}
 
-	public ProductEntity setPrice(final long price) {
+	public ProductEntity setPrice(final double price) {
 		this.price = price;
 		return this;
 	}
