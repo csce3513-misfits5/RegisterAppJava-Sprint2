@@ -6,12 +6,22 @@
 
 	<link rel="stylesheet" type="text/css" href="/styles/master.css">
 	<link rel="stylesheet" type="text/css" href="/styles/productListing.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<script type="text/javascript" src="/scripts/master.js" defer></script>
 	<script type="text/javascript" src="/scripts/productListing.js" defer></script>
 </head>
 
 <body>
+	<div class="topnav">
+  <div class="search-container">
+    <form action="/different_page.html">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
 	<div class="header">
 		<h1 class="primary-message">Products Listing</h1>
 		<input type = "image" id="ViewCart" src="/images/View-Cart.png" alt="View Cart" onclick = "addProduct();"/>
@@ -35,6 +45,7 @@
 					<span class="productLookupCodeDisplay" th:text="${product.lookupCode}">lookupCode</span>
 					<br />&nbsp;&nbsp;<span class="productCountDisplay" th:text="${product.count}">0</span>
 					<br />&nbsp;&nbsp;<span class="productCreatedOnDisplay" th:text="${product.createdOn}">12/31/1999</span>
+
 				</li>
 			</ul>
 		</div>
