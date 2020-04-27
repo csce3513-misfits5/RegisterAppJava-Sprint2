@@ -41,9 +41,11 @@ public class TransactionRouteController extends BaseRouteController {
 
 		// create modelandview to get product and find count status
 		final ModelAndView modelAndView = this.setErrorMessageFromQueryString(new ModelAndView(ViewNames.SHOPPING_CART.getViewName()),	queryParameters);
+		
+		modelAndView.addObject(ViewModelNames.IS_ELEVATED_USER.getValue(), true);
+		
+		/* If nothing exists set count to 1 or increment count
 		int count = this.productUpdateCommand.getApiProduct().getCount();
-
-		// If nothing exists set count to 1 or increment count
 		if(count <= 0)
 		{
 			modelAndView.addObject(ViewModelNames.PRODUCT.getValue(),(new Product()).setLookupCode(StringUtils.EMPTY).setCount(1));
@@ -51,7 +53,7 @@ public class TransactionRouteController extends BaseRouteController {
 		else
 		{
 			modelAndView.addObject(ViewModelNames.PRODUCT.getValue(),(new Product()).setCount(count + 1));
-		}
+		}*/
 
 		return modelAndView;
 	}
