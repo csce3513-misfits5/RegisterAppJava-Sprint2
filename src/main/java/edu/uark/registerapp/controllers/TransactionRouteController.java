@@ -27,9 +27,7 @@ import edu.uark.registerapp.commands.products.ProductUpdateCommand;
 @RequestMapping(value = "/shoppingCart")
 public class TransactionRouteController extends BaseRouteController {
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView start(
-		@RequestParam final Map<String, String> queryParameters,
-		final HttpServletRequest request)
+	public ModelAndView start(@RequestParam final Map<String, String> queryParameters,final HttpServletRequest request)
 	{
 		final Optional<ActiveUserEntity> activeUserEntity =	this.getCurrentUser(request);
 		if (!activeUserEntity.isPresent()) 
@@ -38,11 +36,11 @@ public class TransactionRouteController extends BaseRouteController {
 		} 
 		else if (!this.isElevatedUser(activeUserEntity.get())) 
 		{
-			return this.buildNoPermissionsResponse(ViewNames.PRODUCT_LISTING.getRoute());
+			return this.buildNoPermissionsResponse(ViewNames.SHOPPING_CART.getRoute());
 		}
 
 		// create modelandview to get product and find count status
-		final ModelAndView modelAndView = this.setErrorMessageFromQueryString(new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()),	queryParameters);
+		final ModelAndView modelAndView = this.setErrorMessageFromQueryString(new ModelAndView(ViewNames.SHOPPING_CART.getViewName()),	queryParameters);
 		int count = this.productUpdateCommand.getApiProduct().getCount();
 
 		// If nothing exists set count to 1 or increment count
@@ -68,10 +66,10 @@ public class TransactionRouteController extends BaseRouteController {
 		} 
 		else if (!this.isElevatedUser(activeUserEntity.get())) 
 		{
-			return this.buildNoPermissionsResponse(ViewNames.PRODUCT_LISTING.getRoute());
+			return this.buildNoPermissionsResponse(ViewNames.SHOPPING_CART.getRoute());
 		}
 
-		final ModelAndView modelAndView =this.setErrorMessageFromQueryString(new ModelAndView(ViewNames.PRODUCT_DETAIL.getViewName()), queryParameters);
+		final ModelAndView modelAndView =this.setErrorMessageFromQueryString(new ModelAndView(ViewNames.SHOPPING_CART.getViewName()), queryParameters);
 		int count = this.productUpdateCommand.getApiProduct().getCount();
 		
 		// Create and set value to set the count in the try/catch
