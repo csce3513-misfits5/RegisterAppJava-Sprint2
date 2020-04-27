@@ -53,9 +53,9 @@ public class ProductEntity {
 	}
 
     @Column(name="price")
-    private long price;
+    private double price;
 
-	public long getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 
@@ -84,7 +84,7 @@ public class ProductEntity {
 
 	public ProductEntity() { //default constructor for ProductEntity
 		this.count = -1;
-		this.price = 0L; //price var
+		this.price = 0.00; //price var
 		this.id = new UUID(0, 0);
 		this.lookupCode = StringUtils.EMPTY;
 	}
