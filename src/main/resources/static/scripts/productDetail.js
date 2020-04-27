@@ -49,7 +49,8 @@ function saveActionClick(event) {
 	const saveProductRequest = {
 		id: productId,
 		count: getProductCount(),
-		lookupCode: getProductLookupCode()
+		lookupCode: getProductLookupCode(),
+		price: getProductPrice()
 	};
 
 	if (productIdIsDefined) {
@@ -93,6 +94,15 @@ function validateSave() {
 		return false;
 	} else if (count < 0) {
 		displayError("Product count may not be negative.");
+		return false;
+	}
+
+	const price = getProductPrice();
+	if ((price == null) || isNaN(price)) {
+		displayError("Please provide a valid product price.");
+		return false;
+	} else if (price < 0) {
+		displayError("Product price may not be negative.");
 		return false;
 	}
 
@@ -172,5 +182,12 @@ function getProductCount() {
 }
 function getProductCountElement() {
 	return document.getElementById("productCount");
+}
+
+function getProductPrice() {
+	return Number(getProductPriceElement().value);
+}
+function getProductPriceElement(){
+	return document.getElementById("productPrice");
 }
 // End getters and setters
