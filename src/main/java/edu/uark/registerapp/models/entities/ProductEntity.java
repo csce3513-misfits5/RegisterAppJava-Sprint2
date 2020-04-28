@@ -75,7 +75,7 @@ public class ProductEntity {
 	public Product synchronize(final Product apiProduct) {
 		this.setCount(apiProduct.getCount());
 		this.setLookupCode(apiProduct.getLookupCode());
-
+		this.setPrice(apiProduct.getPrice());
 		apiProduct.setId(this.getId());
 		apiProduct.setCreatedOn(this.getCreatedOn());
 

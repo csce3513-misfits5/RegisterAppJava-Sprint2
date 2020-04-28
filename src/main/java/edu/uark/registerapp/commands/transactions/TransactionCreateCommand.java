@@ -27,7 +27,7 @@ public class TransactionCreateCommand implements VoidCommandInterface {
         //TODO: products need to be added to transaction when clicked, need to be able to adjust quantity
         for (ProductEntity productEntity : this.productRepository.findAll())
         {
-            double purchasedQuantity = 1; //right now hard coded for one
+            int purchasedQuantity = 1; //right now hard coded for one
             transactionTotal += (productEntity.getPrice() * purchasedQuantity); //grabs price of entry and multiplies by quantity
             transactionEntries.add(
                 (new TransactionEntryEntity())

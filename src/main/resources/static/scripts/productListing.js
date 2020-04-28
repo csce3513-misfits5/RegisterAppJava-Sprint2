@@ -32,3 +32,7 @@ function productClick(event) {
 		"/productDetail/"
 		+ listItem.querySelector("input[name='productId'][type='hidden']").value);
 }
+
+function cartClick(event) {
+	let addItem = findClickedListItemElement(event.target);
+}
