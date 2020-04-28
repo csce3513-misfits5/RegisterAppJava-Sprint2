@@ -1,40 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org"> <!--This renders the View-->
 <head>
-<link rel="stylesheet" href="shoppingCart.css" media="screen" title="no title" charset="utf-8">
-<link rel="stylesheet" href="master.css" media="screen" title="no title" charset="utf-8">
-<h1 style="color: black; text-align: center;"> Shopping Cart </h1>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="/scripts/productListing.js" defer></script>
-<!-- this master file directs it to go to the sign in page if you sign out -->
-<script type="text/javascript" src="/scripts/master.js" defer></script>
-
-
+  <link rel="stylesheet" href="shoppingCart.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="master.css" media="screen" title="no title" charset="utf-8">
+  <h1 style="color: black; text-align: center;"> Shopping Cart </h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- this master file directs it to go to the sign in page if you sign out -->
+  <script type="text/javascript" src="/scripts/master.js" defer></script>
 </head>
+
 <body style="background-color: white; margin: auto;">
 
+  <!-- this will have to be the actual products -->
+  <div id="main" class="main">
+    <div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+      <h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+    </div>
 
-<!-- this will have to be the actual products -->
-<div id="main" class="main">
-  <div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
-    <h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+  <div class = "productsDisplay">
+    <ul id="productsListing" class="products">
+      <li th:each="product : ${products}">
+        <input type="hidden" name="productId" th:value="${product.id}" />
+        <span class="productLookupCodeDisplay" th:text="${product.lookupCode}">lookupCode</span>
+        <br />&nbsp;&nbsp;<span class="productCountDisplay" th:text="${product.count}">0</span>
+        <br />&nbsp;&nbsp;<span class="productPriceDisplay" th:text="${product.price}">0</span>
+      </li>
+    </ul>
   </div>
 
-  <div class="productsWrapper">
-<div class = "productsDisplay">
-  <ul id="productsListing" class="products">
-    <li th:each="product : ${products}">
-      <input type="hidden" name="productId" th:value="${product.id}" />
-      <span class="productLookupCodeDisplay" th:text="${product.lookupCode}">lookupCode</span>
-      <br />&nbsp;&nbsp;<span class="productCountDisplay" th:text="${product.count}">0</span>
-      <br />&nbsp;&nbsp;<span class="productPriceDisplay" th:text="${product.price}">0</span>
-    </li>
-  </ul>
-</div>
-
-<div class="footer">
-  <img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
-</div>
+  <div class="footer">
+    <img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
+  </div>
 
 
 </body>
