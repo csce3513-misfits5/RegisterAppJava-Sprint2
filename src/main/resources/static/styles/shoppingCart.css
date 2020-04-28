@@ -22,6 +22,25 @@ img.footer {
 	bottom: 20;
 }
 
+#detail {
+    margin: 0;
+    border: 0;
+    font-size: 18px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-user-select: none;
+    color: #000000;
+    border: solid;
+    padding: 10px;
+    background-color: #FFFFFF;
+    cursor: default;
+	text-decoration: none;
+}
+
 .products {
 	margin: 0 0 2em 0;
 	list-style-type: none;
