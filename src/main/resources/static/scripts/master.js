@@ -194,9 +194,9 @@ function signOutActionClickHandler() {
 //End sign out
 function addProduct() {
 // right now I'll just put an alert
-	alert("Add to shopping cart functionality");
+	alert("Item added to cart!");
 	// will need to change this website to the product detail page
-	window.location.assign("https://misfits5-app.herokuapp.com/");
+	//window.location.assign("https://misfits5-app.herokuapp.com/");
 	// will also have to send the information over
 
 }
