@@ -45,6 +45,10 @@ img.footer {
 	left: .1em;
 }
 
+li.hidden {
+	display: none
+}
+
 a.button {
 	text-decoration: none;
 }
@@ -53,3 +57,12 @@ a.button {
   margin: auto;
 }
 /* this is for the other one */
+
+input.quantityUpdate {
+	border: solid;
+	line-height: 1.75em;
+	width: 40px;
+	background-color: #FFFFFF;
+	font-size: 16px;
+	padding: 0em .25em 0em .25em;
+}
