@@ -64,10 +64,15 @@ function productClick(event) {
 
 	const productLookupcodeElement = document.createElement("span");
     productLookupcodeElement.classList.add("productLookupCodeDisplay");
-    productLookupcodeElement.classList.add("productPriceDisplay");
     productLookupcodeElement.innerHTML = listItem.querySelector("span.productLookupCodeDisplay").innerHTML;
     
-	listItemElement.appendChild(productLookupcodeElement);
+    listItemElement.appendChild(productLookupcodeElement);
+    
+    const productPriceElement = document.createElement("span");
+    productPriceElement.classList.add("productPriceDisplay");
+    productPriceElement.innerHTML = listItem.querySelector("productPriceDisplay").innerHTML;
+
+    listItemElement.appendChild(productPriceElement);
 
 	listItemElement.appendChild(document.createElement("br"));
 	listItemElement.appendChild(document.createTextNode("\u00A0\u00A0"));
