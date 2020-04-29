@@ -1,23 +1,32 @@
-<!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"> <!--This renders the View-->
-<head>
-  <link rel="stylesheet" href="/styles/master.css" type="text/css">
-  <link rel="stylesheet" href="/styles/shoppingCart.css" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<html xmlns:th="https://www.thymeleaf.org">
 
-  <!-- this master file directs it to go to the sign in page if you sign out -->
-  <script type="text/javascript" src="/scripts/master.js" defer></script>
+<head>
+	<title>Register - Shopping Cart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" type="text/css" href="/styles/master.css">
+	<link rel="stylesheet" type="text/css" href="/styles/shoppingCart.css">
+
+	<script type="text/javascript" src="/scripts/master.js" defer></script>
+	<script type="text/javascript" src="/scripts/shoppingCart.js" defer></script>
 </head>
 
-<body style="background-color: white; margin: auto;">
-  <h1 style="color: black; text-align: center;"> Shopping Cart </h1>
+<body>
 
-  <!-- this will have to be the actual products -->
-  <div id="main" class="main">
-    <div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
-      <h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
-    </div>
+	<div class="header">
+		<h1 class="primary-message">Cart</h1>
+	</div>
+		
+	<div id="main" class="main">
+		<div id="error" th:class="${#strings.isEmpty(errorMessage)} ? hidden : ''">
+			<h4 id="errorMessage" class="error-message" th:text="${errorMessage}"></h4>
+		</div>
+
+
+  <input id="productSearch" type="text" placeholder="Search..." />
+
+  <br />
+  <br />
 
   <div class = "productsDisplay">
     <ul id="productsListing" class="products">
@@ -30,14 +39,32 @@
     </ul>
   </div>
 
+  <br />
+  <br />
+  <hr />
+  <br />
+
+  <div class = "productsDisplay">
+    <ul id="cartProducts" class="products">
+    </ul>
+  </div>
+
+
+    <br />
+    <br />
+		<div class="productActionsWrapper">
+      <button id="cancelCartAction" type="button" class="action">Cancel</button>
+      <br />
+      <br />
+			<button id="completeCartAction" type="button" class="action">Complete</button>
+    </div>
+
+	</div>
+
   <div class="footer">
     <img id="signOutImage" src="/images/Sign-Out.png" alt="Sign Out" class="footer" />
   </div>
 
-  <input type="button" id="detail" onClick="location.href='/productListing/'"
-        value="Shop Here!" class="action"></input>
-
-
-
 </body>
 </html>
+
