@@ -49,7 +49,7 @@ function productClick(event) {
         productQuantityElement.value = (Number(productQuantityElement.value) + 1).toString();
      
 
-		return;
+		return;ß
 	}
 
 	const listItemElement = document.createElement("li");
