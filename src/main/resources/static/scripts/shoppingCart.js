@@ -78,6 +78,9 @@ function productClick(event) {
 	quantityElement.classList.add("quantityUpdate");
     listItemElement.appendChild(quantityElement);
 
+    //spaces out price and quantity
+    listItemElement.appendChild(document.createElement("&emsp"));
+
     const productPriceElement = document.createElement("span");
     productPriceElement.classList.add("productPriceDisplay");
     productPriceElement.innerHTML = listItem.querySelector("span.productPriceDisplay").innerHTML;
