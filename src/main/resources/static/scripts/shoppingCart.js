@@ -67,12 +67,6 @@ function productClick(event) {
     productLookupcodeElement.innerHTML = listItem.querySelector("span.productLookupCodeDisplay").innerHTML;
     
     listItemElement.appendChild(productLookupcodeElement);
-    
-    /*const productPriceElement = document.createElement("");
-    productPriceElement.classList.add("productPriceDisplay");
-    productPriceElement.innerHTML = listItem.querySelector("productPriceDisplay").innerHTML;
-
-    listItemElement.appendChild(productPriceElement);*/
 
 	listItemElement.appendChild(document.createElement("br"));
 	listItemElement.appendChild(document.createTextNode("\u00A0\u00A0"));
@@ -84,7 +78,12 @@ function productClick(event) {
 	quantityElement.classList.add("quantityUpdate");
     listItemElement.appendChild(quantityElement);
 
-    //const priceElement = document.createElement("")
+    const productPriceElement = document.createElement("span");
+    productPriceElement.classList.add("productPriceDisplay");
+    productPriceElement.innerHTML = listItem.querySelector("span.productPriceDisplay").innerHTML;
+
+    listItemElement.appendChild(productPriceElement);
+
 }
 
 function onProductSearchKeyPress(event) {
