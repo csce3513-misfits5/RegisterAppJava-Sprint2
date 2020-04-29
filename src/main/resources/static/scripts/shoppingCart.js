@@ -42,10 +42,14 @@ function productClick(event) {
 			continue;
 		}
 
-		const productQuantityElement = existingCartProductElements[i].querySelector("input[name='productQuantity']");
-		productQuantityElement.value = (Number(productQuantityElement.value) + 1).toString();
+        //Set product quantity and multiply price by quantity
+        const productQuantityElement = existingCartProductElements[i].querySelector("input[name='productQuantity']");
+        const productPriceElement = existingCartProductElements[i].querySelector("input[name='productQuantity'}");
+        productPriceElement.value = (Number(productQuantityElement.value * productPriceElement.value)).toString();
+        productQuantityElement.value = (Number(productQuantityElement.value) + 1).toString();
+     
 
-		return;
+		return;ß
 	}
 
 	const listItemElement = document.createElement("li");
@@ -59,7 +63,8 @@ function productClick(event) {
 	listItemElement.appendChild(productIdElement);
 
 	const productLookupcodeElement = document.createElement("span");
-	productLookupcodeElement.classList.add("productLookupCodeDisplay");
+    productLookupcodeElement.classList.add("productLookupCodeDisplay");
+    productLookupcodeElement.classList.add("productPriceDisply");
 	productLookupcodeElement.innerHTML = listItem.querySelector("span.productLookupCodeDisplay").innerHTML;
 	listItemElement.appendChild(productLookupcodeElement);
 
@@ -72,6 +77,8 @@ function productClick(event) {
 	quantityElement.value = "1";
 	quantityElement.classList.add("quantityUpdate");
     listItemElement.appendChild(quantityElement);
+
+    //const priceElement = document.createElement("")
 }
 
 function onProductSearchKeyPress(event) {
