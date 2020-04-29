@@ -68,11 +68,11 @@ function productClick(event) {
     
     listItemElement.appendChild(productLookupcodeElement);
     
-    const productPriceElement = document.createElement("");
+    /*const productPriceElement = document.createElement("");
     productPriceElement.classList.add("productPriceDisplay");
     productPriceElement.innerHTML = listItem.querySelector("productPriceDisplay").innerHTML;
 
-    listItemElement.appendChild(productPriceElement);
+    listItemElement.appendChild(productPriceElement);*/
 
 	listItemElement.appendChild(document.createElement("br"));
 	listItemElement.appendChild(document.createTextNode("\u00A0\u00A0"));
