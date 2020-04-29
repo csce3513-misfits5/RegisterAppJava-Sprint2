@@ -80,6 +80,7 @@ function productClick(event) {
 
     //spaces out price and quantity
     listItemElement.appendChild(document.createElement("&emsp"));
+    listItemElement.appendChild(document.createTextNode("\u00A0\u00A0"));
 
     const productPriceElement = document.createElement("span");
     productPriceElement.classList.add("productPriceDisplay");
