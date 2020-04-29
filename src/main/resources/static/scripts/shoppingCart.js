@@ -64,7 +64,7 @@ function productClick(event) {
 
 	const productLookupcodeElement = document.createElement("span");
     productLookupcodeElement.classList.add("productLookupCodeDisplay");
-    productLookupcodeElement.classList.add("productPriceDisply");
+    productLookupcodeElement.classList.add("productPriceDisplay");
     productLookupcodeElement.innerHTML = listItem.querySelector("span.productLookupCodeDisplay").innerHTML;
     
 	listItemElement.appendChild(productLookupcodeElement);
